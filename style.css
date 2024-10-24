@@ -22,6 +22,10 @@ img, picture, svg, video, canvas{
     display: block;
 }
 
+textarea:focus, input:focus{
+    outline: none;
+}
+
 @media(prefers-reduced-motion: no-preference) {
     :has(:target) {
         scroll-behavior: smooth;
@@ -112,6 +116,8 @@ main {
     width: min(58rem, 100vw);
     background-color: var(--clr-white);
     border-radius: var(--br-34);
+    display: flex;
+    flex-direction: row;
 }
 
 main .text {
@@ -135,6 +141,7 @@ main .text {
     width: 21px;
     height: 21px;
     background-image: url(./assets/images/icon-list.svg);
+    flex-shrink: 0;
 }
 
 .form {
@@ -150,11 +157,31 @@ main .text {
     justify-content: space-between;
 }
 
-.input {
+.message-error {
+    color: var(--clr-tomato);
+}
+
+.input{
+    --_input-color: var(--input-color, var(--clr-dark-slate-grey));
     padding: 1rem 1.5rem;
-    border: 3px solid --clr-grey;
-    color: var(--clr-grey);
+    border: 3px solid var(--_input-color);
+    background-color: var(--clr-white);
+    color: var(--_input-color);
     border-radius: var(--br-8);
+}
+
+.input[state="empty"]{
+    --input-color: var(--clr-grey);
+}
+
+.input[state="error"]{
+    --input-color: var(--clr-tomato);    
+    background-color: color(from var(--_input-color) xyz x y z / 0.2);
+
+}
+
+.input[state="isvalid"] {
+    --input-color: var(--clr-charcoal-grey);
 }
 
 .button {
@@ -207,7 +234,7 @@ main .image {
     height: 100%;
     background-color: var(--clr-charcoal-grey);
 }
-
+/*
 .modal {
     width: 504px;
     position: absolute;
@@ -217,19 +244,132 @@ main .image {
     padding: 3rem 4rem;
     border: none;
     border-radius: var(--br-34);
+} */
+
+.modal {
+    width: 100%;
+    height: 100%;
+    background-color: var(--clr-charcoal-grey);
+    border: none;
 }
 
-.modal img {
-    margin-bottom: 2.375rem;
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 504px; 
+    padding: 3rem 4rem;
+    border: none;
+    border-radius: var(--br-34);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--clr-white);
+}
+
+.modal-content img {
+    margin-bottom: 0.75rem;
+    width: 4rem;
+    height: 4rem;
 }
 
 .modal-title {
     line-height: 100%;
-    margin-bottom: 1.625rem;
 }
 
-.modal .message {
-    margin-bottom: 2.375rem;
+.modal-content .message {
+    margin-bottom: 0.75rem;
+}
+
+
+@media (max-width: 58rem) {
+
+    body {
+        padding-block: calc(2vw * 4);
+        padding-inline: max(0.5rem, 4vw - 1rem);
+    }
+
+    main {
+        padding: 0;
+        height: fit-content;
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    main .text {
+        padding: 2.1875rem 1.5rem 1.6875rem;
+        width: min(100%, 500px);
+        gap: 1rem;
+    }
+
+    .form {
+        padding-block: 0.875rem;
+        gap: 1.25rem;
+    }
+
+
+    main .image {
+        width: 100%;
+        height: min(300px, 100vw * 0.76);
+        background-image: url(./assets/images/illustration-sign-up-mobile.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 0 0 var(--br-34) var(--br-34);
+    }
+}
+
+
+
+@media (max-width: 28rem) {
+    .text-title {
+        font-size: var(--fs-40);
+    }
+
+    body {
+        padding: 0;
+        height: fit-content;
+    }
+
+    .list {
+        padding-block: 0.25rem;
+    }
+    
+
+    /* modal */
+    .modal::backdrop {
+        background-color: var(--clr-white);
+    }
+        
+    .modal {
+        background-color: var(--clr-white);
+        border: none;
+    }    
+    
+    .modal-content {
+        width: 100%;
+        height: 100%;
+        padding: 148px 0 0 24px;
+        border: none;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--clr-white);
+        gap: 1.625rem;
+        overflow: hidden;
+    }
+
+    .modal-content .message {
+        flex-grow: 2;
+    }    
+
 }
 
 

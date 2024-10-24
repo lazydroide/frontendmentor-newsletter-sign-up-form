@@ -13,50 +13,51 @@
 </head>
 <body>
 
-  <main class="row">
-    <section class="text column">
-      <h1 class="text-title">Stay updated!</h1>
-      <p class="list text-body">Join 60,000+ product managers receiving monthly updates on:</p>
-      <div class="list column">
-        <div class="list-item row">
-          <span class="list-icon"></span><p>Product discovery and building what matters</p>
-        </div>
-        <div class="list-item row">
-          <span class="list-icon"></span><p>Measuring to ensure updates are a success</p>
-        </div>
-        <div class="list-item row">
-          <span class="list-icon"></span><p>And much more!</p>
-        </div>
-      </div>
-        
-
-      <form action="" class="form column" id="form">
-        <div class="form-group column">
-          <div class="input-text text-label row">
-            <label for="email">Email Address</label>
-            <span class="message-error"></span>
+  <div class="container">
+    <main>
+      <section class="text column">
+        <h1 class="text-title">Stay updated!</h1>
+        <p class="list text-body">Join 60,000+ product managers receiving monthly updates on:</p>
+        <div class="list column">
+          <div class="list-item row">
+            <span class="list-icon"></span><p class="text-body">Product discovery and building what matters</p>
           </div>
-          <input class="input text-body" type="email" name="email" id="email" placeholder="email@company.com" pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$" required>          
+          <div class="list-item row">
+            <span class="list-icon"></span><p class="text-body">Measuring to ensure updates are a success</p>
+          </div>
+          <div class="list-item row">
+            <span class="list-icon"></span><p class="text-body">And much more!</p>
+          </div>
         </div>
-        <button class="button text-button" id="submit" type="submit">Subscribe to monthly newsletter</button>
-      </form>
-    </section>
-    <section class="image"></section>
-
-  </main>  
-
-  <!-- Sign-up form end --> 
-
-  <!-- Success message start -->
-
-  <dialog class="modal" id="modal">
-      <img src="./assets/images/icon-success.svg" alt="">
-      <h2 class="modal-title text-title">Thanks for subscribing!</h2>
-      <p class="message text-body">A confirmation email has been sent to <span id="email-message" class="text-button">ash@loremcompany.com</span>.
-        Please open it and click the button inside to confirm your subscription.</p>
-      <button class="button" id="dialog-button" autofocus>Dismiss message</button>
     
-  </dialog>  
+        <form action="" class="form column" id="form">
+          <div class="form-group column">
+            <div class="input-text text-label row">
+              <label for="email">Email Address</label>
+              <span id="message-error" class="message-error"></span>
+            </div>
+            <input state="empty" class="input text-body" type="email" name="email" id="email" placeholder="email@company.com" pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$" required>
+          </div>
+          <button class="button text-button" id="submit" type="submit">Subscribe to monthly newsletter</button>
+        </form>
+      </section>
+      <section class="image"></section>
+    </main>
+    <!-- Sign-up form end -->
+    <!-- Success message start -->
+    <dialog class="modal" id="modal">
+      <div class="wrapper">
+        <div class="modal-content">
+          <img src="./assets/images/icon-success.svg" alt="">
+          <h2 class="modal-title text-title">Thanks for subscribing!</h2>
+          <p class="message text-body">A confirmation email has been sent to <span id="email-message" class="text-button">ash@loremcompany.com</span>.
+            Please open it and click the button inside to confirm your subscription.</p>
+          <button class="button text-button" id="dialog-button" autofocus>Dismiss message</button>
+        </div>   
+      </div>
+           
+    </dialog>
+  </div>
 
   
 
