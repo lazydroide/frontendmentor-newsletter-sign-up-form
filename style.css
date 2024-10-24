@@ -1,0 +1,238 @@
+/* RESET */
+*, 
+*::before, 
+*::after{
+    box-sizing: border-box;
+    /* outline: 1px solid lime; */
+    /* background-color: hsl(0, 100%, 50%, 0.1); */
+}
+ 
+*{
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+body {
+    min-height: 100svh;
+}
+ 
+img, picture, svg, video, canvas{
+    max-width: 100%;
+    display: block;
+}
+
+@media(prefers-reduced-motion: no-preference) {
+    :has(:target) {
+        scroll-behavior: smooth;
+        scroll-padding-top: 3rem; /* para separar el punto de stop de la parte superior de la pantalla*/
+    }
+}
+ 
+@media (prefers-reduced-motion: reduce){
+     html:focus-within {
+        scroll-behavior: auto;
+     }
+     *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition: none;
+    }
+}
+
+/* variables */
+:root {
+    --clr-tomato: hsl(4, 100%, 67%);
+    --clr-dark-slate-grey: hsl(234, 29%, 20%);
+    --clr-charcoal-grey: hsl(235, 18%, 26%);
+    --clr-grey: hsl(231, 7%, 60%);
+    --clr-white: hsl(0, 0%, 100%);
+
+    --gradient-success: linear-gradient(90deg, #FF537B, #FF693A);
+
+    --fs-12: 0.75rem;
+    --fs-16: 1rem;
+    --fs-40: 2.5rem;
+    --fs-56: 3.5rem;
+
+    --fw-400: 400;
+    --fw-700: 700;
+
+    --br-8: 8px;
+    --br-34: 34px;
+
+    font-family: 'Roboto', sans-serif;
+
+}
+
+/* typography */
+.text-title {
+    font-size: var(--fs-56);
+    font-weight: var(--fw-700);
+    color: var(--clr-dark-slate-grey);
+}
+
+.text-body {    
+    font-size: var(--fs-16);
+    font-weight: var(--fw-400);
+    line-height: 150%;
+}
+
+.text-label {
+    font-size: var(--fs-12);
+    font-weight: var(--fw-700);
+    line-height: 150%;
+}
+
+.text-button {
+    font-size: var(--fs-16);
+    font-weight: var(--fw-700);
+    line-height: 150%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background-color: var(--clr-charcoal-grey);
+    display: grid;
+    place-content: center;
+}
+
+main {
+    width: min(58rem, 100vw);
+    background-color: var(--clr-white);
+    border-radius: var(--br-34);
+}
+
+main .text {
+    width: 50%;
+    padding-block: 5.625rem;
+    padding-left: 4rem;
+    padding-right: 0.5rem;
+    gap: 21px;
+}
+
+.list {
+    gap: 0.25rem;
+}
+
+.list-item {
+    padding-block: 0.1875rem;
+    gap: 1rem;
+}
+
+.list-item .list-icon{
+    width: 21px;
+    height: 21px;
+    background-image: url(./assets/images/icon-list.svg);
+}
+
+.form {
+    padding-block: 1rem;
+    gap: 1.5rem;
+}
+
+.form-group {
+    gap: 0.5rem;
+}
+
+.input-text {
+    justify-content: space-between;
+}
+
+.input {
+    padding: 1rem 1.5rem;
+    border: 3px solid --clr-grey;
+    color: var(--clr-grey);
+    border-radius: var(--br-8);
+}
+
+.button {
+    padding: 1rem 1.5rem;
+    background-color: var(--clr-charcoal-grey);
+    color: var(--clr-white);
+    border-radius: var(--br-8);
+    border: none;
+    position: relative;
+    transform-style: preserve-3d;
+    width: 100%;
+}
+
+/* disable the button while the form is invalid */
+.form:invalid .button {
+    pointer-events: none;
+}
+
+.form:valid .button:hover::before,
+#dialog-button:hover::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-success);
+    filter: blur(1rem);
+    position: absolute;
+    inset: -1rem;
+    transform: translate3d(1rem, 1rem, -1px);
+}
+
+.form:valid .button:hover,
+#dialog-button:hover {
+    background: var(--gradient-success);
+    box-shadow: 0 8px 1rem 1rem linear-gradient(90deg, #FF537B, #FF693A);
+    cursor: pointer;
+}
+
+main .image {
+    width: 50%;
+    padding: 1.5rem;
+    background-image: url(./assets/images/illustration-sign-up-desktop.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+/* success screen */
+.modal::backdrop {
+    width: 100%;
+    height: 100%;
+    background-color: var(--clr-charcoal-grey);
+}
+
+.modal {
+    width: 504px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3rem 4rem;
+    border: none;
+    border-radius: var(--br-34);
+}
+
+.modal img {
+    margin-bottom: 2.375rem;
+}
+
+.modal-title {
+    line-height: 100%;
+    margin-bottom: 1.625rem;
+}
+
+.modal .message {
+    margin-bottom: 2.375rem;
+}
+
+
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
